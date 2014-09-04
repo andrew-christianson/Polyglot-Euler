@@ -1,0 +1,3 @@
+// Two lines...
+#include <stdlib.h>
+int main(int argc, char const *argv[]){system("python 'Problem 6.py'");}
