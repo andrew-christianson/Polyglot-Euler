@@ -15,21 +15,19 @@ else:
 def isprime(num):
     if num == 2:
         return True
-    bound = math.sqrt(num)
-    if num & 1 == 0:
-        return False
-    for cfactor in xrange(3, int(bound + 1)):
+    bound = int(math.ceil(math.sqrt(num)))
+    for cfactor in xrange(2, bound):
         if num % cfactor == 0:
             return False
     return True
 
 if __name__ == '__main__':
-    largest_factor = 0
-    N = 600851475143777
-    for candidate in range(3, int(math.ceil(math.sqrt(N)))):
-        if N % candidate == 0:
-            if isprime(candidate):
-                largest_factor = candidate
-            elif isprime(int(N / candidate)):
-                largest_factor = int(N / candidate)
-    print("The answer to Euler Probelm 3 is", largest_factor)
+    N = 600851475143
+    factors = [
+            [f, N // f] 
+            for f in xrange(3,int(math.ceil(math.sqrt(N))))
+            if (N % f) == 0
+            ]
+    factors = sum(factors, [])
+    factors = [f for f in factors if isprime(f)]
+    print("The answer to Euler Probelm 3 is", max(factors))

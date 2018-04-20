@@ -9,6 +9,7 @@ else:
     import builtins
     xrange = builtins.range
 
-res = sum(num for num in xrange(1,1001) 
+res = sum(num for num in xrange(1, 1001) 
           if num % 3 == 0 or num % 5 == 0)
 print("The answer to Euler Problem 1 is {}".format(res))
+
